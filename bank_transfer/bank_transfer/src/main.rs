@@ -43,24 +43,29 @@ fn access_account(accounts: &mut Vec<Account>) -> Option<usize>{
         Some(index) => {println!("login successful"); Some(index)}
         None =>{println!("login failed");None}
     }
-
-    
 }
 fn create_account(accounts: &mut Vec<Account>) {
     // TODO: implement account creation
     let mut name = String::new();
+    let mut balance = String::new();
+
     println!("Enter account name:");
     io::stdin().read_line(&mut name).expect("Failed name input");
+
     let name = name.trim().to_string();
-    let mut balance = String::new();
     println!("Enter initial balance:");
-    io::stdin().read_line(&mut balance).expect("failed bakance input");
-    let balance: f64 = balance.trim().parse().expect("Invalid balance input");
+
+    io::stdin().read_line(&mut balance)
+        .expect("failed bakance input");
+    let balance: f64 = balance.trim().parse()
+        .expect("Invalid balance input");
+    
     let account = Account {
         name,
         balance,
     };
     accounts.push(account);
+
     println!("Account created successfully!");
 }
 
